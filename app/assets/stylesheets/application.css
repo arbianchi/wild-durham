@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+body {
+  background: #ffffff url("https://static.rootsrated.com/image/upload/s--eLx16-1d--/t_rr_large_traditional/tb79qpqj6kio5dfnank4.jpg") no-repeat;
+  background-size: 100% auto;
+}
+
