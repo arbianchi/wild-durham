@@ -1,5 +1,5 @@
-<div id='observations' class='jumbotron'>
-  <h3>Observations</h3> 
+<div id='sightings' class='jumbotron jumbotron-fluid'>
+  <h3>Sightings</h3> 
 </div>
 
 <div id='observations' class='jumbotron'>
@@ -9,17 +9,22 @@
         <th>Sighted At</th>
         <th>Description</th>
         <th>Pic</th>
+        <th></th>
       </tr>
     </thead>
 
     <tbody>
       <% @observations.each do |obs| %>
         <tr> 
-          <td><%= obs.sighted_at%></td>
+          <td><%= obs.sighted_at.strftime("%m/%d/%y %H:%M UTC")%></td>
           <td><%= obs.description%></td>
           <td>  <% if !obs.pic.nil? %>
               <img height=200px width=auto src=<%= obs.pic%>>
             <% end %>
+          </td>
+          <td>
+            <%= link_to 'Edit', edit_observation_path(obs), class: "btn btn-default btn-primary"  %>
+            <%= link_to 'Delete', obs, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary" %>
           </td>
 
         </tr>
@@ -30,5 +35,3 @@
   </table>
 </div>
 
-<%# <button type="button" class="btn btn-primary"><%= link_to 'Edit', edit_observation_path(@observation) %1></button> %>
-<%# <button type="button" class="btn btn-primary"><%= link_to 'Back', observations_path %1></button> %>
