@@ -1,17 +1,32 @@
 <div id='observations' class='jumbotron'>
-  <h2>Observations</h2> 
+  <h3>Observations</h3> 
 </div>
 
 <div id='observations' class='jumbotron'>
   <table class="table table-hover table-striped table-condensed">
     <thead>
-      <tr>
+      <tr text-align=center >
         <th>Sighted At</th>
         <th>Description</th>
-        <th>Location</th>
         <th>Pic</th>
       </tr>
     </thead>
+
+    <tbody>
+      <% @observations.each do |obs| %>
+        <tr> 
+          <td><%= obs.sighted_at%></td>
+          <td><%= obs.description%></td>
+          <td>  <% if !obs.pic.nil? %>
+              <img height=200px width=auto src=<%= obs.pic%>>
+            <% end %>
+          </td>
+
+        </tr>
+      <% end %>
+    </tbody>
+
+
   </table>
 </div>
 

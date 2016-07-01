@@ -6,6 +6,8 @@ class TwilioController < ActionController::Base
     description = params["Body"]
     picture = params["MediaUrl0"]
     location = params["FromZip"]
-  binding.pry  
+    number = params["From"]
+
+    Observation.create!(posted_by: number, sighted_at: Time.now, description: description,pic: picture)
   end
 end
