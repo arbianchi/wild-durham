@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   before_action :authenticate_user!
 
-  include Pundit
+  after_action :verify_authorized, unless: :devise_controller? 
+  rescue_from Pundit::NotAuthorizedError do |e|
+    flash[:danger] = "NO!"
+    redirect_to "/"
+  end
 
   skip_after_action :verify_authorized, only: [:index, :new, :show, :create]
 

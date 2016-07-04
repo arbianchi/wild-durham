@@ -1,6 +1,6 @@
 class ObservationsController < ApplicationController
-  before_action :set_observation, only: [:show, :edit, :update]
-  skip_after_action :verify_authorized, only: [:index, :new, :show, :create]
+  before_action :set_observation, only: [:show, :edit, :update, :destroy]
+  skip_after_action :verify_authorized, only: [:index, :new, :show, :create, :destroy]
 
 
   def index
