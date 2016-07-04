@@ -1,7 +1,4 @@
-<div id='sightings' class='jumbotron'>
-  <h3>Sightings</h3> 
-</div>
-
+<h1>Observation updated!</h1>
 <div id='observations' class='jumbotron'>
   <table class="table table-hover table-striped table-condensed">
     <thead>
@@ -14,16 +11,14 @@
     </thead>
 
     <tbody>
-      <% @observations.each do |obs| %>
         <tr class='entry'> 
-          <td><%= obs.sighted_at.strftime("%m/%d/%y %H:%M UTC")%></td>
-          <td><%= obs.description%></td>
-          <td>  <% if !obs.pic.nil? %>
+          <td><%= @observation.sighted_at.strftime("%m/%d/%y %H:%M UTC")%></td>
+          <td><%= @observation.description%></td>
+          <td>  <% if !@observation.pic.nil? %>
               <img height=200px width=auto src=<%= obs.pic%>>
-            <% end %>
           </td>
           <td>
-            <%= link_to 'Edit', edit_observation_path(obs), class: "btn btn-default btn-primary"  %>
+            <%= link_to 'Back', root_path, class: "btn btn-default btn-primary"  %>
             <%= link_to 'Delete', obs, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary" %>
           </td>
 
@@ -33,5 +28,3 @@
 
 
   </table>
-</div>
-

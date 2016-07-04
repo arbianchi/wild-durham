@@ -1,33 +1,40 @@
 class ObservationsController < ApplicationController
-  before_action :set_observation, only: [:show, :edit, :update, :destroy]
+  before_action :set_observation, only: [:show, :edit, :update]
+  skip_after_action :verify_authorized, only: [:index, :new, :show, :create]
+
 
   def index
     @observations = Observation.all
+    # authorize @observations
   end
 
   # GET /observations/1
   # GET /observations/1.json
   def show
     @observation = Observation.find(params[:id])
-    @observations = @observation
+    # @observations = @observation
+    # authorize @observation
   end
 
-  
+
   # GET /observations/new
   def new
     @observation = Observation.new
+    # authorize @observation
   end
 
   # GET /observations/1/edit
   def edit
     @observation = Observation.find(params[:id])
-    @observations = @observation
+    # @observations = @observation
+    # authorize @observation
   end
 
   # POST /observations
   # POST /observations.json
   def create
     @observation = Observation.new(observation_params)
+    # authorize @observation
 
     respond_to do |format|
       if @observation.save
@@ -51,6 +58,7 @@ class ObservationsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @observation.errors, status: :unprocessable_entity }
       end
+      # authorize @observation
     end
   end
 
@@ -62,6 +70,7 @@ class ObservationsController < ApplicationController
       format.html { redirect_to observations_url, notice: 'Observation was successfully destroyed.' }
       format.json { head :no_content }
     end
+    # authorize @observation
   end
 
 
@@ -69,10 +78,11 @@ class ObservationsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_observation
     @observation = Observation.find(params[:id])
+    # authorize @observation
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def observation_params
-    params.require(:observation).permit(:sighted_at, :description, :location, :picture)
+    params.require(:observation).permit(:sighted_at, :description, :location, :pic)
   end
 end
