@@ -1,5 +1,5 @@
 <div id='sightings' class='jumbotron'>
-  <h3><strong>Sightings:</strong></h3>
+  <h2><strong>Sightings:</strong></h2>
   <p>Text a picture and description to (919)289-8440 or: </p>
   <%= link_to 'Post Here', new_observation_path(@observation), class: "btn btn-default btn-primary"  %>
 </div>
@@ -17,7 +17,7 @@
 
     <tbody>
       <% @observations.each do |obs| %>
-        <tr class='entry'> 
+        <tr class='entry' > 
           <td><%= obs.sighted_at.strftime("%m/%d/%y %H:%M UTC")%></td>
           <td><%= obs.description%></td>
           <td>  <% if !obs.pic.nil? %>
