@@ -1,5 +1,7 @@
 <div id='sightings' class='jumbotron'>
-  <h3>Sightings</h3> 
+  <h3><strong>Sightings:</strong></h3>
+  <p>Text a picture and description to (919)289-8440 or: </p>
+  <%= link_to 'Post Here', new_observation_path(@observation), class: "btn btn-default btn-primary"  %>
 </div>
 
 <div id='observations' class='jumbotron'>
@@ -22,9 +24,10 @@
               <img height=200px width=auto src=<%= obs.pic%>>
             <% end %>
           </td>
-          <td>
-            <%= link_to 'Edit', edit_observation_path(obs), class: "btn btn-default btn-primary"  %>
-            <%= link_to 'Delete', obs, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary" %>
+          <td>  <% if current_user.phone == obs.posted_by %>
+              <%= link_to 'Edit', edit_observation_path(obs), class: "btn btn-default btn-primary"  %>
+              <%= link_to 'Delete', obs, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary" %>
+            <% end %>
           </td>
 
         </tr>

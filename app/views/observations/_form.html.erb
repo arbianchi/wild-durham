@@ -1,23 +1,25 @@
-<%= form_for(@observation) do |f| %>
-  <% if @observation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@observation.errors.count, "error") %> prohibited this observation from being saved:</h2>
+  <%= form_for(@observation) do |f| %>
+    <% if @observation.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@observation.errors.count, "error") %> prohibited this observation from being saved:</h2>
 
-      <ul>
-        <% @observation.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% @observation.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    </div>
+    <div class="field">
+      <%= f.label 'Link to image' %><br>
+      <%= f.text_area :pic %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%# <%= f.hidden_field :subject_id, value: @observation.subject.id %1> %>
-  <%# <%= f.hidden_field :value, value: 0 %1> %>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>

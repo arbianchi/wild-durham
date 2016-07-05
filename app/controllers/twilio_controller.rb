@@ -8,6 +8,6 @@ class TwilioController < ActionController::Base
     location = params["FromZip"]
     number = params["From"]
 
-    Observation.create!(posted_by: number, sighted_at: Time.now, description: description,pic: picture)
+    Observation.create!(posted_by: number, sighted_at: Time.now, description: description,pic: picture, phone: number)
   end
 end
