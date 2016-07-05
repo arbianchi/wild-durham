@@ -41,8 +41,6 @@ class ApplicationPolicy
   def is_owner?
     user == record.user
   end
-end
-  end
 
   def scope
     Pundit.policy_scope!(user, record.class)
