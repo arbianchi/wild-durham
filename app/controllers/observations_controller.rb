@@ -1,7 +1,7 @@
 class ObservationsController < ApplicationController
   before_action :set_observation, only: [:show, :edit, :update, :destroy]
   skip_after_action :verify_authorized, only: [:index, :new, :show, :create, :destroy]
-
+  skip_before_filter  :verify_authenticity_token
 
   def index
     @observations = Observation.all
