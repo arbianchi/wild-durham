@@ -5,7 +5,4 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable, :validatable
   has_many :observations
 
-  # def admin?
-  #   self.permission == "admin"
-  # end
 end

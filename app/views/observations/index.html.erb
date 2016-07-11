@@ -24,7 +24,7 @@
               <img height=200px width=auto src=<%= obs.pic%>>
             <% end %>
           </td>
-          <td>  <% if current_user.phone == obs.posted_by %>
+          <td>  <% if policy(obs).edit?%>
               <%= link_to 'Edit', edit_observation_path(obs), class: "btn btn-default btn-primary"  %>
               <%= link_to 'Delete', obs, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary" %>
             <% end %>

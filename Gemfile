@@ -1,6 +1,15 @@
 source 'https://rubygems.org'
 
 
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'devise'
+gem 'pundit'
+gem 'twitter-bootstrap-rails'
+gem 'bootstrap_form'
+gem 'quiet_assets'
+gem 'httparty'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 # Use postgresql as the database for Active Record
@@ -36,7 +45,16 @@ gem 'binding_of_caller'
 
 group :development, :test do
 # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+gem 'faker'
+gem 'capybara'
+gem 'guard-rspec'
+gem 'launchy'
 gem 'byebug', platform: :mri
+gem 'rspec-rails'
+gem 'factory_girl_rails'
+gem 'pry-rails'
+gem 'better_errors'
+gem 'binding_of_caller'
 end
 
 group :development do
@@ -48,18 +66,6 @@ gem 'spring'
 gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'devise'
-gem 'pundit'
-gem 'twitter-bootstrap-rails'
-gem 'bootstrap_form'
-gem 'quiet_assets'
-group :development, :test do
-gem 'pry-rails'
-gem 'better_errors'
-gem 'binding_of_caller'
+group :production do
+gem 'pg', '~> 0.18'
 end
-
-gem 'httparty'

@@ -2,7 +2,7 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
-    @user = user
+    @user = user ||= User.new
     @record = record
   end
 
@@ -35,11 +35,7 @@ class ApplicationPolicy
   end
 
   def is_admin?
-    user.admin?
-  end
-
-  def is_owner?
-    user == record.user
+    user.permission == "admin"
   end
 
   def scope
@@ -57,5 +53,9 @@ class ApplicationPolicy
     def resolve
       scope
     end
+  end
+  
+  def is_owner?
+    (user.id == record.created_by) || (record.phone == user.phone)
   end
 end

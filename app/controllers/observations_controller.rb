@@ -35,6 +35,7 @@ class ObservationsController < ApplicationController
   def create
     @observation = Observation.new(observation_params)
     # authorize @observation
+    binding.pry
 
     respond_to do |format|
       if @observation.save
@@ -83,6 +84,6 @@ class ObservationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def observation_params
-    params.require(:observation).permit(:sighted_at, :description, :location, :pic)
+    params.require(:observation).permit(:phone, :created_by, :sighted_at, :description, :pic)
   end
 end
