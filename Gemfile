@@ -8,10 +8,10 @@ gem 'devise'
 gem 'pundit'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form'
-gem 'quiet_assets'
+# gem 'quiet_assets'
 gem 'httparty'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.rc2', '< 5.1'
+gem 'rails', '>= 5.0.0', '< 5.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -28,7 +28,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-# gem 'turbolinks', '~> 5.x'
+gem 'turbolinks', '~> 5.x'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -46,6 +46,7 @@ gem 'binding_of_caller'
 group :development, :test do
 # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 gem 'faker'
+gem "bullet"
 gem 'capybara'
 gem 'guard-rspec'
 gem 'launchy'

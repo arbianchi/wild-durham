@@ -18,6 +18,7 @@
             <img height=200px width=auto src=<%= @observation.pic%>>
           </td>
           <td>
+              <%= link_to 'Edit', edit_observation_path(@observation), class: "btn btn-default btn-primary"  %>
             <%= link_to 'Delete', @observation, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary" %>
           </td>
 

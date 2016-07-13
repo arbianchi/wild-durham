@@ -1,42 +1,11 @@
-
-<%# <div class="jumbotron"> %>
-  <%#   <h2>New Sighting</h2> %>
-
-  <%#   <%= form_for(@observation) do |f| %1> %>
-  <%#     <% if @observation.errors.any? %1> %>
-    <%#       <div id="error_explanation"> %>
-      <%#         <h2><%= pluralize(@observation.errors.count, "error") %1> prohibited this observation from being saved:</h2> %>
-
-      <%#         <ul> %>
-        <%#           <% @observation.errors.full_messages.each do |message| %1> %>
-        <%#             <li><%= message %1></li> %>
-        <%#           <% end %1> %>
-      <%#         </ul> %>
-    <%#       </div> %>
-  <%#     <% end %1> %>
-<%#     <%= f.hidden_field :user_id, value: current_user.id %1> %>
-<%#     <%= f.hidden_field :sighted_at, value: Time.now %1> %>
-<%#     <%= f.hidden_field :posted_by, value: current_user.phone %1> %>
-
-<%#     <div class="field"> %>
-  <%#       <%= f.label :description %1><br> %>
-  <%#       <%= f.text_area :description %1> %>
-  <%#     </div> %>
-<%#     <div class="field"> %>
-  <%#       <%= f.label 'Link to image' %1><br> %>
-  <%#       <%= f.text_area :pic %1> %>
-  <%#     </div> %>
-<%#     <div class="actions"> %>
-  <%#       <%= f.submit %1> %>
-  <%#     </div> %>
 <div class="jumbotron">
   <h4> New Sighting</h4>
   <%= bootstrap_form_for @observation, url: observations_path(@observation) do |f| %>
     <%= f.text_field :description %>
     <%= f.text_area :pic %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :created_by, value: current_user.id %>
     <%= f.hidden_field :sighted_at, value: Time.now %>
-    <%= f.hidden_field :posted_by, value: current_user.phone %>
+    <%= f.hidden_field :phone, value: current_user.phone %>
     <button class="btn btn-primary">Submit</button>
   <% end %>
 

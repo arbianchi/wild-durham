@@ -1,17 +1,19 @@
-  <%= form_for(@observation) do |f| %>
-    <% if @observation.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@observation.errors.count, "error") %> prohibited this observation from being saved:</h2>
+<%= form_for(@observation) do |f| %>
+  <% if @observation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@observation.errors.count, "error") %> prohibited this observation from being saved:</h2>
 
-        <ul>
-          <% @observation.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-    <%= f.hidden_field :created_by, value: current_user.id %>
-    <%= f.hidden_field :phone value: current_user.phone %>
+      <ul>
+
+        <% @observation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%# <%= f.hidden_field :created_by, value: current_user.id %1> %>
+  <%# <%= f.hidden_field :phone value: current_user.phone %1> %>
+  <% if policy(@observation).update?%>
     <div class="field">
       <%= f.label :description %><br>
       <%= f.text_area :description %>
@@ -21,7 +23,7 @@
       <%= f.text_area :pic %>
     </div>
     <div class="actions">
-      <%= binding.pry%>
       <%= f.submit %>
     </div>
   <% end %>
+<% end %>

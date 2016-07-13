@@ -5,30 +5,24 @@ class ObservationsController < ApplicationController
 
   def index
     @observations = Observation.all
-    # authorize @observations
   end
 
   def show
     @observation = Observation.find(params[:id])
-    # @observations = @observation
-    # authorize @observation
   end
 
 
   def new
     @observation = Observation.new
-    # authorize @observation
   end
 
   def edit
     @observation = Observation.find(params[:id])
-    # @observations = @observation
-    # authorize @observation
+    authorize @observation
   end
 
   def create
     @observation = Observation.new(observation_params)
-    # authorize @observation
 
     respond_to do |format|
       if @observation.save
@@ -41,26 +35,23 @@ class ObservationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /observations/1
-  # PATCH/PUT /observations/1.json
   def update
 
     @observation = Observation.find(params[:id])
 
+    authorize @observation
+
     respond_to do |format|
-      if @observation.update(observation_params)
+      if @observation.update(description: params[:description], pic: params[:pic])
         format.html { redirect_to @observation, notice: 'Observation was successfully updated.' }
         format.json { render :show, status: :ok, location: @observation }
       else
         format.html { render :edit }
         format.json { render json: @observation.errors, status: :unprocessable_entity }
       end
-      # authorize @observation
     end
   end
 
-  # DELETE /observations/1
-  # DELETE /observations/1.json
   def destroy
     @observation.destroy
     respond_to do |format|
@@ -78,7 +69,6 @@ class ObservationsController < ApplicationController
     # authorize @observation
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def observation_params
     params.require(:observation).permit(:phone, :created_by, :sighted_at, :description, :pic)
   end
