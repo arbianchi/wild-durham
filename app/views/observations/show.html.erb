@@ -11,14 +11,13 @@
     </thead>
 
     <tbody>
-        <tr class='entry'> 
-          <td><%= @observation.sighted_at.strftime("%m/%d/%y %H:%M UTC")%></td>
-          <td><%= @observation.description%></td>
-          <td>  <% if !@observation.pic.nil? %>
-              <img height=200px width=auto src=<%= @observation.pic%>>
+      <tr class='entry'> 
+        <td><%= @observation.sighted_at.strftime("%m/%d/%y %H:%M UTC")%></td>
+        <td><%= @observation.description%></td>
+        <td>  <% if !@observation.pic.nil? %>
+            <img height=200px width=auto src=<%= @observation.pic%>>
           </td>
           <td>
-            <%= link_to 'Back', root_path, class: "btn btn-default btn-primary"  %>
             <%= link_to 'Delete', @observation, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary" %>
           </td>
 
@@ -28,3 +27,5 @@
 
 
   </table>
+  <%= link_to 'Back', root_path, class: "btn btn-default btn-primary"  %>
+</div>

@@ -44,6 +44,9 @@ class ObservationsController < ApplicationController
   # PATCH/PUT /observations/1
   # PATCH/PUT /observations/1.json
   def update
+
+    @observation = Observation.find(params[:id])
+
     respond_to do |format|
       if @observation.update(observation_params)
         format.html { redirect_to @observation, notice: 'Observation was successfully updated.' }
