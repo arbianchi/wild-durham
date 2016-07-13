@@ -8,8 +8,6 @@ class ObservationsController < ApplicationController
     # authorize @observations
   end
 
-  # GET /observations/1
-  # GET /observations/1.json
   def show
     @observation = Observation.find(params[:id])
     # @observations = @observation
@@ -17,25 +15,20 @@ class ObservationsController < ApplicationController
   end
 
 
-  # GET /observations/new
   def new
     @observation = Observation.new
     # authorize @observation
   end
 
-  # GET /observations/1/edit
   def edit
     @observation = Observation.find(params[:id])
     # @observations = @observation
     # authorize @observation
   end
 
-  # POST /observations
-  # POST /observations.json
   def create
     @observation = Observation.new(observation_params)
     # authorize @observation
-    binding.pry
 
     respond_to do |format|
       if @observation.save
