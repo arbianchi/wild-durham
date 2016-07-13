@@ -1,6 +1,9 @@
-class TwilioController < ActionController::Base
+class TwilioController < ActionController::Base 
   # after_filter :set_header 
   # skip_before_action :verify_authenticity_token 
+  # skip_after_action :verify_authorized
+
+  # skip_before_filter  :verify_authenticity_token
 
   def sms
     description = params["Body"]
@@ -8,6 +11,11 @@ class TwilioController < ActionController::Base
     location = params["FromZip"]
     number = params["From"]
 
-    Observation.create!(posted_by: number, sighted_at: Time.now, description: description,pic: picture, phone: number)
+    user = User.find_by(phone: number)
+
+    if user
+
+      Observation.create!(created_by: user.id, sighted_at: Time.now, description: description,pic: picture, phone: number)
+    end
   end
 end

@@ -20,6 +20,7 @@
         <tr class='entry' > 
           <td><%= obs.sighted_at.strftime("%m/%d/%y %H:%M UTC")%></td>
           <td><%= obs.description%></td>
+          <td><%= obs.user.id %></td>
           <td>  <% if !obs.pic.nil? %>
               <img height=200px width=auto src=<%= obs.pic%>>
             <% end %>

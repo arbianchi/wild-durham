@@ -17,8 +17,8 @@ class ApplicationController < ActionController::Base
   skip_after_action :verify_authorized, only: [:index, :new, :show, :create]
 
   def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :phone) }
-        devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :current_password, :phone) }
+      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :phone) }
+        devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :current_password, :phone) }
   end
 
 
